@@ -1,8 +1,11 @@
 from fastmcp import FastMCP
 import os
 import sqlite3
+import tempfile
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "expenses.db")
+# In cloud deployments (like FastMCP Cloud / Docker), the /app code directory is read-only.
+# We store the writable database in /tmp or custom EXPENSES_DB_PATH.
+DB_PATH = os.environ.get("EXPENSES_DB_PATH", os.path.join(tempfile.gettempdir(), "expenses.db"))
 CATEGORIES_PATH = os.path.join(os.path.dirname(__file__), "categories.json")
 
 mcp = FastMCP("ExpenseTracker")
