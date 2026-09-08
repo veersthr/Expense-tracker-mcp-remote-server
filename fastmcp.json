@@ -3,5 +3,11 @@
   "source": {
     "path": "src/remote_mcp_server/main.py",
     "entrypoint": "mcp"
+  },
+  "environment": {
+    "python": ">=3.12",
+    "dependencies": [
+      "fastmcp"
+    ]
   }
 }
